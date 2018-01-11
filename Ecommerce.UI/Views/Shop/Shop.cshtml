@@ -1,0 +1,152 @@
+﻿@model ECommerce.UI.Models.ShopModel
+@{
+    ViewBag.Title = "Shop";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<body class="home-blog-show">
+    <div class="content">
+        <div class="container">
+            <div class="all-products-details">
+                <div class="row">
+                    <div class="col-md-7">
+                        <h2>Categories</h2>
+                        <span class="products-avalabile">Showing all @Model.plist.Count products</span>
+                        <span class="products-avalabile"> @Model.Category_Name</span>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="sort-dropdown float-right">
+                            <span>Deafult sorting <i class="icon-515" title="515"></i></span>
+                            <ul>
+                                <li><a href="/Shop/Lh">Cost low to high</a></li>
+                                <li><a href="/Shop/Hl">Cost hight to low</a></li>
+                                <li><a href="#">Sales low to high</a></li>
+                                <li><a href="#">Sales high to low</a></li>
+                                <li><a href="#">Top low to high</a></li>
+                                <li><a href="#">Top high to low</a></li>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-6">
+                            <div class="products-dropdown open-dropdown">
+                                <span><i class="icon-515" title="515"></i>Accessories</span>
+                                <ul>
+                                    @foreach (var item in Model.clist)
+                                    {
+                                        <li><a href="/Shop/Products/@item.CategoryID">@item.CategoryName</a></li>
+
+                                    }
+                                    @Model.Category_ID= item.CategoryID;
+                                    @Model.Category_Name= item.CategoryName;
+                                    @Model.Category_Name;
+                                </ul>
+                                @Model.Category_Name;
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="col-md-12 col-xs-6">
+                            <div class="products-dropdown">
+                                <span>Brands</span>
+                                <ul>
+                                    @foreach (var item in Model.blist)
+                                    {
+                                        <li><a href="/Shop/Brands/@item.BrandID">@item.BrandName</a></li>
+                                    }
+
+                                </ul>
+                                @*<ul>
+                                    @foreach (var item in Model.BrandsFilter)
+                                    {
+                                        <li>@item.BrandName</li>
+
+
+                                    }
+                                </ul>*@
+
+
+
+                                <div class="products-dropdown-close">Clear <i class="icon-456" title="close"></i></div>
+                                <div class="clear">
+                                
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-xs-6">
+                            <div class="products-dropdown">
+                                <span>Colors</span>
+                                <ul>
+                                    @foreach (var item in Model.colorlist)
+                                    {
+                                        <li><a href="/Shop/Colors/@item.ColorID">@item.ColorName</a></li>
+                                    }
+                                </ul>
+                                <div class="products-dropdown-close">Clear <i class="icon-456" title="close"></i></div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-xs-6">
+                            <div class="products-dropdown">
+                                <span>Size</span>
+                                <ul>
+                                    @foreach (var item in Model.sizelist)
+                                    {
+                                        <li><a href="/Shop/Sizes/@item.SizeID">@item.SizeName</a></li>
+                                    }
+                                </ul>
+                                <div class="products-dropdown-close">Clear <i class="icon-456" title="close"></i></div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        @foreach (var item in Model.plist)
+                        {
+                            <div class="col-md-4 col-xs-6">
+                                <div class="product">
+                                    <div class="product-cover">
+                                        <div class="product-cover-hover"><span><a href="product.html">View</a></span></div>
+                                        <img src="@item.ImagePath" />
+                                    </div>
+                                    <div class="product-details">
+                                        <h1><a href="#">@item.ProductsName</a></h1>
+                                        <p>@item.ProductDetail</p>
+
+                                        <div class="product-price">
+                                            <a href="/Cart/Add/@item.ProductsID"><i class="icon-257" title="add to cart"></i></a>
+                                           
+                                            @item.UnitPrice
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+
+                    <ul class="page-numbers">
+                        <li><span class="page-numbers current">1</span> /</li>
+                        <li><a class="page-numbers" href="#">2</a> /</li>
+                        <li><a class="page-numbers" href="#">3</a> /</li>
+                        <li><a class="page-numbers" href="#">4</a> /</li>
+                        <li><a class="page-numbers" href="#">5</a> /</li>
+                        <li><a class="next page-numbers" href="#">→</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
